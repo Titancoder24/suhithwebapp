@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FAFAF5"/>
+      <stop offset="100%" stop-color="#F5E9D9"/>
+    </linearGradient>
+    <radialGradient id="omCircle" cx="0.5" cy="0.5" r="0.55">
+      <stop offset="0%" stop-color="#FF8A65"/>
+      <stop offset="60%" stop-color="#D84315"/>
+      <stop offset="100%" stop-color="#BF360C"/>
+    </radialGradient>
+    <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Marcellus&amp;family=Manrope:wght@500;700&amp;family=Noto+Sans+Devanagari:wght@600&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Kolam dot borders -->
+  <g fill="#D84315" opacity="0.5">
+    <circle cx="60"  cy="30" r="3"/><circle cx="120" cy="30" r="2"/><circle cx="180" cy="30" r="3"/>
+    <circle cx="240" cy="30" r="2"/><circle cx="300" cy="30" r="3"/><circle cx="360" cy="30" r="2"/>
+    <circle cx="420" cy="30" r="3"/><circle cx="480" cy="30" r="2"/><circle cx="540" cy="30" r="3"/>
+    <circle cx="600" cy="30" r="2"/><circle cx="660" cy="30" r="3"/><circle cx="720" cy="30" r="2"/>
+    <circle cx="780" cy="30" r="3"/><circle cx="840" cy="30" r="2"/><circle cx="900" cy="30" r="3"/>
+    <circle cx="960" cy="30" r="2"/><circle cx="1020" cy="30" r="3"/><circle cx="1080" cy="30" r="2"/>
+    <circle cx="1140" cy="30" r="3"/>
+  </g>
+  <g fill="#D84315" opacity="0.5">
+    <circle cx="60"  cy="600" r="3"/><circle cx="120" cy="600" r="2"/><circle cx="180" cy="600" r="3"/>
+    <circle cx="240" cy="600" r="2"/><circle cx="300" cy="600" r="3"/><circle cx="360" cy="600" r="2"/>
+    <circle cx="420" cy="600" r="3"/><circle cx="480" cy="600" r="2"/><circle cx="540" cy="600" r="3"/>
+    <circle cx="600" cy="600" r="2"/><circle cx="660" cy="600" r="3"/><circle cx="720" cy="600" r="2"/>
+    <circle cx="780" cy="600" r="3"/><circle cx="840" cy="600" r="2"/><circle cx="900" cy="600" r="3"/>
+    <circle cx="960" cy="600" r="2"/><circle cx="1020" cy="600" r="3"/><circle cx="1080" cy="600" r="2"/>
+    <circle cx="1140" cy="600" r="3"/>
+  </g>
+
+  <!-- Om medallion right side -->
+  <g transform="translate(1020, 315)">
+    <circle cx="0" cy="0" r="175" fill="url(#omCircle)"/>
+    <circle cx="0" cy="0" r="167" fill="none" stroke="#F9A826" stroke-width="2" opacity="0.6"/>
+    <circle cx="0" cy="0" r="149" fill="none" stroke="#FAFAF5" stroke-width="1" opacity="0.3"/>
+    <text x="0" y="72"
+          font-family="'Noto Sans Devanagari', 'Tiro Devanagari Sanskrit', 'Sanskrit Text', serif"
+          font-size="240"
+          fill="#FAFAF5"
+          text-anchor="middle"
+          font-weight="600">ॐ</text>
+  </g>
+
+  <!-- Content -->
+  <g transform="translate(80, 180)">
+    <!-- Badge -->
+    <rect x="0" y="0" width="270" height="42" rx="21" fill="#D84315"/>
+    <text x="24" y="28"
+          font-family="Manrope, 'Segoe UI', sans-serif"
+          font-size="15"
+          fill="#FAFAF5"
+          font-weight="700"
+          letter-spacing="1">SHUBH KARYAS ONLY</text>
+
+    <!-- Brand -->
+    <text x="0" y="100"
+          font-family="Marcellus, Georgia, serif"
+          font-size="52"
+          fill="#D84315"
+          font-weight="400">Purohith Connect</text>
+
+    <!-- Tagline -->
+    <text x="0" y="185"
+          font-family="Marcellus, Georgia, serif"
+          font-size="66"
+          fill="#2C241B">Sacred rituals,</text>
+    <text x="0" y="260"
+          font-family="Marcellus, Georgia, serif"
+          font-size="66"
+          fill="#D84315">delivered to</text>
+    <text x="0" y="335"
+          font-family="Marcellus, Georgia, serif"
+          font-size="66"
+          fill="#D84315">your doorstep.</text>
+  </g>
+
+  <!-- Bottom info bar -->
+  <g transform="translate(80, 555)">
+    <text x="0" y="0"
+          font-family="Manrope, 'Segoe UI', sans-serif"
+          font-size="19"
+          fill="#5C5449"
+          font-weight="600">Verified Vedic purohits · Samagri included · Fixed pricing</text>
+    <text x="0" y="28"
+          font-family="Manrope, 'Segoe UI', sans-serif"
+          font-size="15"
+          fill="#D84315"
+          font-weight="700"
+          letter-spacing="3">PUROHITHCONNECT.COM</text>
+  </g>
+</svg>

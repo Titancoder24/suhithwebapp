@@ -1,0 +1,34 @@
+{
+  "short_name": "Purohith",
+  "name": "Purohith Connect · ಪುರೋಹಿತ ಸಂಪರ್ಕ",
+  "description": "Bengaluru's trusted marketplace for home Shubh Karyas. Book verified Vedic purohits for Satyanarayana, Griha Pravesha, Ganesh, Navagraha, Rudrabhisheka poojas.",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#D84315",
+  "background_color": "#FAFAF5",
+  "lang": "en-IN",
+  "dir": "ltr",
+  "categories": ["lifestyle", "religion", "spiritual", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Book a Pooja",
+      "short_name": "Book",
+      "url": "/login",
+      "description": "Book a home pooja with a verified purohit"
+    },
+    {
+      "name": "Ask Pandit-ji AI",
+      "short_name": "AI",
+      "url": "/app/ai",
+      "description": "Get pooja recommendations from AI"
+    }
+  ]
+}

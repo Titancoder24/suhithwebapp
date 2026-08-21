@@ -1,0 +1,1430 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tiro+Devanagari+Sanskrit&family=Tiro+Kannada&family=Noto+Sans+Kannada:wght@400;500;600;700&display=swap');
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: 'Manrope', system-ui, sans-serif;
+    background: #FAFAF5;
+    color: #2C241B;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Marcellus', serif;
+    letter-spacing: 0;
+}
+
+@layer base {
+    :root {
+        /* Purohith Connect palette — Saffron on Cotton */
+        --background: 51 33% 97%;      /* #FAFAF5 */
+        --foreground: 27 24% 14%;      /* #2C241B */
+        --card: 0 0% 100%;
+        --card-foreground: 27 24% 14%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 27 24% 14%;
+        --primary: 14 82% 46%;         /* #D84315 saffron */
+        --primary-foreground: 51 33% 97%;
+        --secondary: 51 33% 94%;
+        --secondary-foreground: 27 24% 14%;
+        --muted: 51 20% 92%;
+        --muted-foreground: 30 12% 33%; /* #5C5449 */
+        --accent: 36 94% 56%;          /* #F9A826 marigold */
+        --accent-foreground: 27 24% 14%;
+        --destructive: 0 65% 47%;      /* #C62828 */
+        --destructive-foreground: 0 0% 100%;
+        --border: 40 30% 86%;          /* #E5DFD3 */
+        --input: 40 30% 86%;
+        --ring: 14 82% 46%;
+        --chart-1: 14 82% 46%;
+        --chart-2: 36 94% 56%;
+        --chart-3: 133 45% 34%;
+        --chart-4: 30 40% 40%;
+        --chart-5: 0 65% 47%;
+        --radius: 0.75rem;
+    }
+}
+
+@layer base {
+    * { @apply border-border; }
+    body { @apply bg-background text-foreground; }
+
+    ::selection { background: #D84315; color: #FAFAF5; }
+}
+
+@layer components {
+    /* Subtle khadi/parchment grain */
+    .grain-bg {
+        background-color: #fbfbf8;
+        background-image: none;
+    }
+    .saffron-shadow { box-shadow: 0 8px 24px -12px rgba(216, 67, 21, 0.28); }
+    .warm-shadow { box-shadow: 0 2px 8px -2px rgba(44, 36, 27, 0.06); }
+    .mysore-shadow { box-shadow: 0 6px 24px -14px rgba(185, 138, 46, 0.35), 0 2px 6px -3px rgba(44, 36, 27, 0.08); }
+
+    .premium-auth-bg {
+        background: #f4f4ef;
+    }
+
+    .premium-admin-hero {
+        background: rgba(255, 255, 255, 0.025);
+    }
+
+    /* Kolam-inspired divider (existing) */
+    .kolam-divider {
+        height: 24px;
+        background-image:
+            radial-gradient(circle at center, #D84315 2px, transparent 2px),
+            radial-gradient(circle at center, #F9A826 1.5px, transparent 1.5px);
+        background-size: 32px 24px, 32px 24px;
+        background-position: 0 center, 16px center;
+        background-repeat: repeat-x;
+        opacity: 0.35;
+    }
+
+    /* Chandana sandalwood panel — for Karnataka temple sections */
+    .chandana-panel {
+        background-color: #fbfbf8;
+        background-image: none;
+    }
+
+    /* Kavi red-oxide floor pattern (traditional Karnataka home floors) */
+    .kavi-panel {
+        background-color: #fbfbf8;
+        background-image: none;
+    }
+
+    /* Rangoli-style dot lattice — quieter, Karnataka Dassera style */
+    .rangoli-lattice {
+        background-image:
+            radial-gradient(circle at center, rgba(216, 67, 21, 0.14) 1.4px, transparent 1.4px);
+        background-size: 22px 22px;
+    }
+
+    /* Mysore-gold thin frame (silk-saree border feel) */
+    .mysore-frame {
+        border: 1px solid #B98A2E;
+        box-shadow:
+            inset 0 0 0 1px rgba(255, 250, 235, 0.9),
+            inset 0 0 0 2px #B98A2E,
+            inset 0 0 0 3px rgba(185, 138, 46, 0.35);
+    }
+
+    /* App container — mobile-first, capped on desktop */
+    .app-shell {
+        max-width: 480px;
+        margin: 0 auto;
+        min-height: 100vh;
+        background: #FAFAF5;
+        position: relative;
+        padding-bottom: 88px; /* space for bottom nav */
+    }
+    .app-shell-wide {
+        max-width: 100%;
+        margin: 0 auto;
+        min-height: 100vh;
+        background: #FAFAF5;
+    }
+}
+
+@layer components {
+    .sound-toggle {
+        position: fixed;
+        right: 18px;
+        bottom: 18px;
+        z-index: 80;
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 50%;
+        background: #171713;
+        color: #fff;
+        box-shadow: 0 12px 32px rgba(23, 23, 19, 0.2);
+        transition: transform 180ms ease, background-color 180ms ease;
+    }
+    .sound-toggle:hover { background: #d84315; transform: translateY(-2px); }
+    .sound-toggle svg { width: 18px; height: 18px; }
+
+    button, a[href], [role="button"] {
+        -webkit-tap-highlight-color: transparent;
+    }
+    button:not(:disabled), a[href], [role="button"] {
+        transition-property: transform, box-shadow, background-color, border-color, color, opacity;
+        transition-duration: 180ms;
+        transition-timing-function: cubic-bezier(.2,.8,.2,1);
+    }
+    button:not(:disabled):active, a[href]:active, [role="button"]:active {
+        transform: scale(0.975);
+    }
+    .premium-surface {
+        background: #ffffff;
+        border: 1px solid rgba(44, 36, 27, 0.1);
+        box-shadow: 0 16px 48px -36px rgba(44, 36, 27, 0.38);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@layer base {
+    [data-debug-wrapper="true"] { display: contents !important; }
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit; margin-right: inherit; margin-top: inherit; margin-bottom: inherit;
+        padding-left: inherit; padding-right: inherit; padding-top: inherit; padding-bottom: inherit;
+        column-gap: inherit; row-gap: inherit; gap: inherit;
+        border-left-width: inherit; border-right-width: inherit; border-top-width: inherit; border-bottom-width: inherit;
+        border-left-style: inherit; border-right-style: inherit; border-top-style: inherit; border-bottom-style: inherit;
+        border-left-color: inherit; border-right-color: inherit; border-top-color: inherit; border-bottom-color: inherit;
+    }
+}
+
+/* Leaflet fixes for tailwind context */
+.leaflet-container { border-radius: 12px; z-index: 0; }
+
+/* Hide platform-injected badge */
+#emergent-badge { display: none !important; }
+.font-sanskrit {
+    font-family: 'Tiro Devanagari Sanskrit', 'Marcellus', serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+.font-kannada {
+    font-family: 'Tiro Kannada', 'Noto Sans Kannada', 'Marcellus', serif;
+    font-weight: 400;
+    letter-spacing: 0.005em;
+}
+
+/* Giant Om watermark for hero */
+.om-watermark {
+    position: absolute;
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    color: #D84315;
+    opacity: 0.06;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+    z-index: 0;
+}
+
+/* Sacred border pattern using CSS */
+.sacred-border {
+    background-image:
+        linear-gradient(90deg, transparent 0%, transparent 45%, #D84315 45%, #D84315 55%, transparent 55%),
+        radial-gradient(circle at 50% 50%, #F9A826 0%, #F9A826 20%, transparent 21%);
+    background-size: 40px 4px, 20px 20px;
+    background-repeat: repeat-x;
+    background-position: center;
+    height: 20px;
+    opacity: 0.4;
+}
+
+/* Landing-only marketplace system. Content and routes stay unchanged. */
+.landing-modern {
+    --landing-red: #9f1725;
+    --landing-red-dark: #75101b;
+    --landing-ink: #181817;
+    --landing-muted: #686764;
+    --landing-line: #e8e7e2;
+    --landing-soft: #f7f7f4;
+    font-family: 'Plus Jakarta Sans', 'Manrope', system-ui, sans-serif;
+    color: var(--landing-ink);
+    background: #fff;
+}
+
+.landing-modern .font-heading,
+.landing-modern h1,
+.landing-modern h2,
+.landing-modern h3,
+.landing-modern h4 {
+    font-family: 'Plus Jakarta Sans', 'Manrope', system-ui, sans-serif !important;
+    font-weight: 700;
+    letter-spacing: 0;
+}
+
+.landing-modern h1 { font-weight: 700; line-height: 1.02; }
+.landing-modern h2 { line-height: 1.12; }
+.landing-modern .text-ink { color: var(--landing-ink) !important; }
+.landing-modern .text-muted2 { color: var(--landing-muted) !important; }
+.landing-modern .text-saffron,
+.landing-modern .text-kumkuma { color: var(--landing-red) !important; }
+.landing-modern .bg-saffron,
+.landing-modern .bg-kumkuma { background-color: var(--landing-red) !important; }
+.landing-modern .hover\:bg-saffron-dark:hover { background-color: var(--landing-red-dark) !important; }
+
+.landing-modern > .sacred-border,
+.landing-modern footer .sacred-border,
+.landing-modern .hoysala-band { display: none !important; }
+
+.landing-modern .max-w-6xl { max-width: 1240px; }
+.landing-modern .landing-header > div { min-height: 72px; padding-top: 12px; padding-bottom: 12px; }
+.landing-modern .landing-header nav { color: #373633; }
+.landing-modern .landing-header nav a { font-size: 13px; font-weight: 600; }
+
+.landing-modern button,
+.landing-modern [role="button"] {
+    font-family: 'Plus Jakarta Sans', 'Manrope', system-ui, sans-serif;
+    font-weight: 700;
+}
+
+.landing-modern .rounded-full,
+.landing-modern .rounded-xl,
+.landing-modern .rounded-2xl,
+.landing-modern .rounded-3xl {
+    border-radius: 8px !important;
+}
+
+.landing-modern .saffron-shadow,
+.landing-modern .mysore-shadow,
+.landing-modern .warm-shadow {
+    box-shadow: 0 16px 40px -34px rgba(24, 24, 23, 0.55);
+}
+
+.landing-modern section [class*="border-mysoreGold"],
+.landing-modern section [class*="border-warmBorder"] {
+    border-color: var(--landing-line) !important;
+}
+
+.landing-modern .landing-hero {
+    min-height: 720px;
+    border-bottom: 1px solid var(--landing-line);
+}
+.landing-modern .landing-hero > div:first-child {
+    top: 40px;
+    bottom: 40px;
+    width: 39%;
+    background: #f2f0ea;
+    border-color: var(--landing-line);
+    box-shadow: 0 24px 70px -48px rgba(24, 24, 23, 0.55);
+}
+.landing-modern .landing-hero > div:nth-child(2) { max-width: 57%; }
+.landing-modern .landing-hero h1 { font-size: clamp(44px, 5vw, 72px); }
+.landing-modern .landing-hero p { line-height: 1.65; }
+
+.landing-modern section { scroll-margin-top: 88px; }
+.landing-modern section:not(.landing-hero) { padding-top: 56px; padding-bottom: 56px; }
+.landing-modern section > div[class*="rounded"] { border-width: 1px; }
+.landing-modern .chandana-panel,
+.landing-modern .kavi-panel { background: var(--landing-soft) !important; }
+
+.landing-modern #poojas a.group,
+.landing-modern #priests > div:last-child > div,
+.landing-modern section .grid > div[class*="bg-white"] {
+    border-color: var(--landing-line) !important;
+    box-shadow: 0 14px 36px -32px rgba(24, 24, 23, 0.5);
+}
+.landing-modern #poojas a.group:hover,
+.landing-modern #priests > div:last-child > div:hover {
+    border-color: #c8c6bf !important;
+    box-shadow: 0 22px 48px -34px rgba(24, 24, 23, 0.48);
+}
+.landing-modern #poojas a.group > div:first-child { height: 188px; }
+.landing-modern #poojas a.group img { mix-blend-mode: normal; filter: saturate(.88) contrast(1.02); }
+
+.landing-modern .landing-priest-marketplace > div {
+    border: 0;
+    background: #79131d;
+    box-shadow: 0 28px 70px -52px rgba(60, 8, 14, .8);
+}
+.landing-modern .landing-priest-marketplace .bg-cotton { background: #fff !important; }
+.landing-modern .landing-priest-marketplace .border-marigold { border-color: rgba(255,255,255,.18) !important; }
+.landing-modern .landing-priest-marketplace .bg-marigold { background: #fff !important; color: var(--landing-red-dark) !important; }
+
+.landing-modern footer { background: #171716 !important; }
+
+/* Editorial marketplace pass: quiet, structural, and deliberately non-template. */
+.landing-modern {
+    --landing-red: #9d1c24;
+    --landing-red-dark: #74141a;
+    --landing-ink: #171717;
+    --landing-muted: #616161;
+    --landing-line: #deddd8;
+    --landing-soft: #f6f5f1;
+    font-family: 'Manrope', system-ui, sans-serif;
+}
+
+.landing-modern .font-heading,
+.landing-modern h1,
+.landing-modern h2,
+.landing-modern h3,
+.landing-modern h4,
+.landing-modern button,
+.landing-modern [role="button"] {
+    font-family: 'Manrope', system-ui, sans-serif !important;
+}
+
+.landing-modern h1 { font-weight: 600; line-height: 1.08; }
+.landing-modern h2,
+.landing-modern h3 { font-weight: 600; line-height: 1.16; }
+
+.landing-modern .landing-header {
+    background: rgba(255,255,255,.98) !important;
+    backdrop-filter: none !important;
+    border-color: var(--landing-line) !important;
+}
+.landing-modern .landing-header > div { min-height: 68px; }
+.landing-modern .landing-header .w-10.h-10,
+.landing-modern footer .w-11.h-11 { border-radius: 6px !important; box-shadow: none !important; }
+.landing-modern .landing-header nav { gap: 30px; }
+.landing-modern .landing-header nav a { font-size: 12px; font-weight: 600; }
+
+.landing-modern button {
+    border-radius: 5px !important;
+    box-shadow: none !important;
+    transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease !important;
+    transform: none !important;
+}
+
+.landing-modern .landing-hero {
+    min-height: 680px;
+    padding-top: 52px !important;
+    padding-bottom: 52px !important;
+    border-bottom: 1px solid var(--landing-line);
+}
+.landing-modern .landing-hero > div:first-child {
+    top: 28px;
+    bottom: 28px;
+    right: 24px;
+    width: 41%;
+    border-radius: 2px !important;
+    border: 0;
+    box-shadow: none;
+}
+.landing-modern .landing-hero > div:first-child > div {
+    left: 0;
+    right: auto;
+    bottom: 0;
+    width: min(330px, 78%);
+    border: 0;
+    border-radius: 0 !important;
+    background: #fff !important;
+    padding: 18px 20px;
+}
+.landing-modern .landing-hero > div:nth-child(2) { max-width: 53%; }
+.landing-modern .landing-hero h1 {
+    max-width: 720px;
+    font-size: clamp(44px, 4.4vw, 64px);
+    letter-spacing: 0;
+}
+.landing-modern .landing-hero h1 br { display: block; }
+.landing-modern .landing-hero .inline-flex.rounded-full {
+    display: flex;
+    width: fit-content;
+    padding: 0 0 10px !important;
+    margin-bottom: 12px !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--landing-line) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+}
+.landing-modern .landing-hero .mt-8.flex.flex-wrap.items-center {
+    padding-top: 18px;
+    border-top: 1px solid var(--landing-line);
+    gap: 22px;
+}
+
+.landing-modern section:not(.landing-hero) { padding-top: 72px; padding-bottom: 72px; }
+.landing-modern section > div[class*="rounded"] { border-radius: 2px !important; }
+.landing-modern .saffron-shadow,
+.landing-modern .mysore-shadow,
+.landing-modern .warm-shadow { box-shadow: none !important; }
+
+/* Labels read as editorial kickers, not UI chips. */
+.landing-modern section .inline-flex.rounded-full:not(button),
+.landing-modern section span.rounded-full {
+    border-radius: 2px !important;
+    box-shadow: none !important;
+}
+
+/* Mission becomes a split editorial story instead of a card. */
+.landing-modern #mission > div {
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+.landing-modern #mission > div > div { gap: 72px; }
+.landing-modern #mission .grid.grid-cols-2 {
+    border-top: 1px solid var(--landing-line);
+    border-bottom: 1px solid var(--landing-line);
+    gap: 0;
+}
+.landing-modern #mission .grid.grid-cols-2 > div {
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: 22px 24px 22px 0;
+}
+.landing-modern #mission .grid.grid-cols-2 > div + div {
+    border-left: 1px solid var(--landing-line) !important;
+    padding-left: 24px;
+}
+.landing-modern #mission .w-full.md\:w-72 > div {
+    border: 1px solid var(--landing-line) !important;
+    border-radius: 2px !important;
+    padding: 24px;
+}
+
+/* Priest proposition uses one photographic band, with no fake glass tiles. */
+.landing-modern .landing-priest-marketplace > div {
+    border-radius: 2px !important;
+    background: #70171c !important;
+    box-shadow: none !important;
+}
+.landing-modern .landing-priest-marketplace [class*="bg-cotton/10"] {
+    border: 0 !important;
+    border-top: 1px solid rgba(255,255,255,.2) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    padding-left: 0;
+    padding-right: 8px;
+    backdrop-filter: none !important;
+}
+.landing-modern .landing-priest-marketplace .bg-cotton {
+    border: 0 !important;
+    border-radius: 2px !important;
+}
+.landing-modern .landing-priest-marketplace [class*="bg-gradient"] {
+    background: #f3f1eb !important;
+    border-color: var(--landing-line) !important;
+}
+.landing-modern .landing-priest-marketplace .absolute.text-\[420px\] { display: none; }
+
+/* Statistics and devotional context become simple ruled information. */
+.landing-modern section:has([data-testid="mantra-strip"]) { padding-top: 26px; padding-bottom: 26px; }
+.landing-modern [data-testid="mantra-strip"] {
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+}
+.landing-modern section .grid.grid-cols-2.md\:grid-cols-4 {
+    border: 0 !important;
+    border-top: 1px solid var(--landing-line) !important;
+    border-bottom: 1px solid var(--landing-line) !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+}
+.landing-modern [data-testid="grace-manjunatha"] {
+    max-width: none;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: #fff !important;
+    padding: 0 !important;
+}
+.landing-modern [data-testid="grace-manjunatha"] img { border-radius: 0 !important; }
+
+/* Marketplace cards use image-led inventory treatment. */
+.landing-modern #poojas .grid { gap: 18px; }
+.landing-modern #poojas a.group {
+    border: 1px solid var(--landing-line) !important;
+    border-radius: 2px !important;
+    box-shadow: none !important;
+}
+.landing-modern #poojas a.group:hover { border-color: #aaa8a0 !important; box-shadow: none !important; }
+.landing-modern #poojas a.group > div:first-child { height: 220px; border-radius: 0 !important; }
+.landing-modern #poojas a.group [class*="bg-gradient-to-t"] { display: none; }
+.landing-modern #poojas a.group .absolute.bottom-3 { border-radius: 3px !important; box-shadow: none !important; }
+
+/* Repeated content is separated by rules, not nested cards. */
+.landing-modern .chandana-panel { background: var(--landing-soft) !important; }
+.landing-modern .chandana-panel .grid > div,
+.landing-modern #how .grid > div,
+.landing-modern #priests .grid > div,
+.landing-modern #muhurat .grid > div {
+    border: 0 !important;
+    border-top: 1px solid #cbc9c2 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 24px 0 !important;
+}
+.landing-modern #priests .grid { gap: 18px; }
+.landing-modern #priests .purohit-profile {
+    display: block;
+    padding: 0 !important;
+    border: 1px solid var(--landing-line) !important;
+    background: #fff !important;
+    color: inherit;
+    transition: border-color 150ms ease;
+}
+.landing-modern #priests .purohit-profile:hover { border-color: #9d9a91 !important; }
+.landing-modern .purohit-profile-photo {
+    position: relative;
+    aspect-ratio: 4 / 4.35;
+    overflow: hidden;
+    background: #efeee9;
+}
+.landing-modern .purohit-profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 24%;
+    filter: saturate(.88) contrast(1.01);
+    transition: transform 350ms cubic-bezier(.2,.7,.2,1);
+}
+.landing-modern .purohit-profile:hover .purohit-profile-photo img { transform: scale(1.018); }
+.landing-modern .purohit-availability {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 10px;
+    border-radius: 4px;
+    background: rgba(255,255,255,.94);
+    color: #242422;
+    font-size: 10px;
+    font-weight: 700;
+}
+.landing-modern .purohit-availability span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50% !important;
+    background: #278544;
+}
+.landing-modern .purohit-profile-body { padding: 20px; }
+.landing-modern .purohit-profile-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid var(--landing-line);
+    color: var(--landing-red);
+    font-size: 12px;
+    font-weight: 700;
+}
+.landing-modern .chandana-panel .grid > div .rounded-full,
+.landing-modern #priests .grid > div .rounded-full {
+    border-radius: 4px !important;
+}
+.landing-modern #how .absolute.text-7xl,
+.landing-modern #muhurat .absolute.font-sanskrit { display: none; }
+
+/* Product banners are solid, modest blocks with no generated decoration. */
+.landing-modern section > div[class*="bg-gradient-to-br"] {
+    background: #841922 !important;
+    border-radius: 2px !important;
+}
+.landing-modern section > div[class*="bg-gradient-to-br"] > .absolute,
+.landing-modern section > div[class*="bg-gradient-to-br"] .w-40.h-40 { display: none !important; }
+
+.landing-modern #faq { max-width: 900px; }
+.landing-modern #faq > .text-center { text-align: left; }
+.landing-modern #faq [data-orientation] {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+.landing-modern footer { background: #1b1b1a !important; }
+
+@media (max-width: 1279px) {
+    .landing-modern .landing-hero > div:nth-child(2) { max-width: 780px; }
+}
+
+@media (max-width: 767px) {
+    .landing-modern .landing-header > div { min-height: 62px; }
+    .landing-modern .landing-header .text-xl { font-size: 16px; }
+    .landing-modern .landing-header .text-\[11px\] { display: none; }
+    .landing-modern .landing-hero { padding-top: 34px !important; padding-bottom: 42px !important; }
+    .landing-modern .landing-hero h1 { font-size: 40px; }
+    .landing-modern section:not(.landing-hero) { padding-top: 52px; padding-bottom: 52px; }
+    .landing-modern #mission > div > div { gap: 36px; }
+    .landing-modern #poojas a.group > div:first-child { height: 210px; }
+}
+
+/* Full-bleed editorial landing direction: content and navigation remain unchanged. */
+@media (min-width: 1024px) {
+    .landing-modern .landing-hero {
+        width: 100%;
+        max-width: none !important;
+        min-height: min(760px, calc(100vh - 76px));
+        margin: 0 !important;
+        padding-top: 76px !important;
+        padding-right: max(28px, calc((100vw - 1240px) / 2)) !important;
+        padding-bottom: 76px !important;
+        padding-left: max(28px, calc((100vw - 1240px) / 2)) !important;
+        background: #281c16;
+        color: #fffdf9;
+    }
+
+    .landing-modern .landing-hero::before {
+        z-index: 1;
+        top: 0;
+        right: auto;
+        bottom: 0;
+        left: 0;
+        width: 57%;
+        height: auto;
+        border: 0;
+        background: rgba(39, 27, 20, .84);
+    }
+
+    .landing-modern .landing-hero-photo {
+        display: block !important;
+        z-index: 0;
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: auto !important;
+        height: auto !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .landing-modern .landing-hero-photo img {
+        object-position: center right;
+        filter: saturate(.92) contrast(1.04) brightness(.86);
+    }
+
+    .landing-modern .landing-hero-photo::after {
+        display: none;
+    }
+
+    .landing-modern .landing-hero-photo > div {
+        right: max(28px, calc((100vw - 1240px) / 2)) !important;
+        bottom: 28px !important;
+        left: auto !important;
+        width: 280px !important;
+        border-radius: 7px !important;
+        background: rgba(255, 253, 249, .96) !important;
+        box-shadow: 0 16px 44px -28px rgba(0, 0, 0, .55) !important;
+    }
+
+    .landing-modern .landing-hero > div:nth-child(2) {
+        max-width: 51% !important;
+        position: relative;
+        z-index: 2;
+    }
+
+    .landing-modern .landing-hero .text-ink,
+    .landing-modern .landing-hero .text-muted2,
+    .landing-modern .landing-hero .text-hoysala {
+        color: #fffdf9 !important;
+    }
+
+    .landing-modern .landing-hero .text-saffron,
+    .landing-modern .landing-hero .text-kumkuma {
+        color: #f5ab76 !important;
+    }
+
+    .landing-modern .landing-hero h1 {
+        max-width: 680px;
+        color: #fffdf9 !important;
+        font-size: clamp(52px, 5vw, 78px) !important;
+        line-height: .99 !important;
+    }
+
+    .landing-modern .landing-hero .inline-flex.rounded-full {
+        color: #f8e3d3 !important;
+        border-bottom-color: rgba(255, 255, 255, .26) !important;
+    }
+
+    .landing-modern .landing-hero .border-l-2 {
+        border-color: #f5ab76 !important;
+    }
+
+    .landing-modern .landing-hero .mt-8.flex.flex-wrap.items-center {
+        border-top-color: rgba(255, 255, 255, .2);
+    }
+
+    .landing-modern .landing-hero .mt-8.flex.flex-wrap.items-center svg:not(.text-marigold) {
+        color: #f5ab76 !important;
+    }
+}
+
+.landing-modern #poojas {
+    padding-top: 96px !important;
+    padding-bottom: 96px !important;
+}
+
+@media (min-width: 1024px) {
+    .landing-modern #poojas .grid {
+        grid-auto-flow: dense;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: 264px 264px;
+    }
+
+    .landing-modern #poojas a.group {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    .landing-modern #poojas a.group:first-child {
+        grid-row: span 2;
+    }
+
+    .landing-modern #poojas a.group:first-child > div:first-child {
+        height: 100% !important;
+        min-height: 0;
+    }
+
+    .landing-modern #poojas a.group:first-child > div:last-child {
+        position: absolute;
+        right: 18px;
+        bottom: 18px;
+        left: 18px;
+        min-height: 0;
+        border: 1px solid rgba(255, 255, 255, .64);
+        border-radius: 7px !important;
+        background: rgba(255, 253, 249, .96);
+        box-shadow: 0 14px 38px -28px rgba(0, 0, 0, .5);
+    }
+
+    .landing-modern #poojas a.group:not(:first-child) {
+        display: grid;
+        grid-template-columns: 40% 1fr;
+    }
+
+    .landing-modern #poojas a.group:not(:first-child) > div:first-child {
+        height: 100% !important;
+    }
+
+    .landing-modern #poojas a.group:not(:first-child) > div:last-child {
+        min-height: 0;
+        padding: 18px !important;
+    }
+
+    .landing-modern #poojas a.group:not(:first-child) .font-heading {
+        font-size: 16px;
+    }
+
+    .landing-modern #poojas a.group:not(:first-child) .font-kannada {
+        font-size: 15px;
+    }
+}
+
+.landing-modern #mission,
+.landing-modern #how,
+.landing-modern #priests,
+.landing-modern #muhurat {
+    position: relative;
+}
+
+.landing-modern #mission::before,
+.landing-modern #how::before,
+.landing-modern #priests::before,
+.landing-modern #muhurat::before {
+    position: absolute;
+    top: 94px;
+    bottom: 94px;
+    left: max(0px, calc((100% - 1240px) / 2));
+    width: 3px;
+    background: var(--landing-red);
+    content: "";
+    opacity: .7;
+}
+
+.landing-modern #mission > *,
+.landing-modern #how > *,
+.landing-modern #priests > *,
+.landing-modern #muhurat > * { position: relative; }
+
+.landing-modern #priests .purohit-profile-photo {
+    background: #e9e4da;
+}
+
+.landing-modern #priests .purohit-profile-photo::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 35%;
+    background: linear-gradient(transparent, rgba(31, 28, 25, .3));
+    content: "";
+    pointer-events: none;
+}
+
+.landing-modern #priests .purohit-availability { z-index: 1; }
+
+.landing-modern .landing-priest-marketplace {
+    padding-top: 96px !important;
+    padding-bottom: 96px !important;
+}
+
+.landing-modern .landing-priest-marketplace > div {
+    box-shadow: 0 30px 70px -48px rgba(69, 18, 14, .62) !important;
+}
+
+@media (max-width: 1023px) {
+    .landing-modern #poojas { padding-top: 64px !important; padding-bottom: 64px !important; }
+    .landing-modern #mission::before,
+    .landing-modern #how::before,
+    .landing-modern #priests::before,
+    .landing-modern #muhurat::before { display: none; }
+}
+
+@media (max-width: 1279px) {
+    .landing-modern .landing-hero { min-height: auto; }
+    .landing-modern .landing-hero > div:nth-child(2) { max-width: 760px; }
+}
+
+@media (max-width: 767px) {
+    .landing-modern .landing-header > div { min-height: 64px; padding-left: 16px; padding-right: 16px; }
+    .landing-modern .landing-header .text-xl { font-size: 18px; }
+    .landing-modern .landing-hero { padding-top: 40px; padding-bottom: 44px; }
+    .landing-modern .landing-hero h1 { font-size: 42px; }
+    .landing-modern section:not(.landing-hero) { padding-top: 40px; padding-bottom: 40px; }
+}
+
+/* Final landing hierarchy. Kept last to supersede the historical marketing styles above. */
+@media (min-width: 1024px) {
+    .landing-modern .landing-hero {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding-top: 76px !important;
+        padding-right: max(28px, calc((100vw - 1240px) / 2)) !important;
+        padding-bottom: 76px !important;
+        padding-left: max(28px, calc((100vw - 1240px) / 2)) !important;
+        background: #281c16 !important;
+        isolation: isolate;
+    }
+
+    .landing-modern .landing-hero::before {
+        z-index: 1 !important;
+        top: 0 !important;
+        right: auto !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 57% !important;
+        height: auto !important;
+        border: 0 !important;
+        background: rgba(39, 27, 20, .84) !important;
+    }
+
+    .landing-modern .landing-hero-photo {
+        display: block !important;
+        z-index: 0 !important;
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: auto !important;
+        height: auto !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    .landing-modern .landing-hero-photo img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center right !important;
+        filter: saturate(.92) contrast(1.04) brightness(.86) !important;
+    }
+
+    .landing-modern .landing-hero-photo > div {
+        z-index: 3 !important;
+        right: max(28px, calc((100vw - 1240px) / 2)) !important;
+        bottom: 28px !important;
+        left: auto !important;
+        width: 280px !important;
+        border: 0 !important;
+        border-radius: 7px !important;
+        background: rgba(255, 253, 249, .96) !important;
+        box-shadow: 0 16px 44px -28px rgba(0, 0, 0, .55) !important;
+    }
+
+    .landing-modern .landing-hero > div:nth-child(2) {
+        position: relative !important;
+        z-index: 2 !important;
+        max-width: 51% !important;
+    }
+
+    .landing-modern .landing-hero .text-ink,
+    .landing-modern .landing-hero .text-muted2,
+    .landing-modern .landing-hero .text-hoysala { color: #fffdf9 !important; }
+    .landing-modern .landing-hero .text-saffron,
+    .landing-modern .landing-hero .text-kumkuma { color: #f5ab76 !important; }
+    .landing-modern .landing-hero h1 { color: #fffdf9 !important; }
+}
+
+/* Landing visual system: premium marketplace editorial pass. Content and interaction stay unchanged. */
+.landing-modern {
+    --landing-red: #c6471c;
+    --landing-red-dark: #9e3211;
+    --landing-ink: #1f1c19;
+    --landing-muted: #6d6862;
+    --landing-line: #e7e1da;
+    --landing-soft: #fbfaf8;
+    background:
+        linear-gradient(90deg, rgba(198, 71, 28, .045) 1px, transparent 1px) center / min(100%, 1240px) 100%,
+        #fff;
+}
+
+.landing-modern .landing-header {
+    position: sticky;
+    box-shadow: 0 1px 0 rgba(31, 28, 25, .08);
+}
+
+.landing-modern .landing-header > div {
+    min-height: 76px;
+}
+
+.landing-modern .landing-header nav a {
+    position: relative;
+    padding: 8px 0;
+}
+
+.landing-modern .landing-header nav a::after {
+    position: absolute;
+    right: 0;
+    bottom: 2px;
+    left: 0;
+    height: 2px;
+    background: var(--landing-red);
+    content: "";
+    opacity: 0;
+    transform: scaleX(.35);
+    transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.landing-modern .landing-header nav a:hover::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.landing-modern .landing-header .bg-saffron {
+    background: var(--landing-red) !important;
+}
+
+.landing-modern .landing-header a > button,
+.landing-modern .landing-hero a > button,
+.landing-modern #mission a > button,
+.landing-modern #join-purohit a > button,
+.landing-modern footer a > button {
+    border-radius: 7px !important;
+    box-shadow: 0 3px 0 rgba(77, 23, 11, .22) !important;
+    transform: translateY(0) !important;
+}
+
+.landing-modern .landing-header a > button:hover,
+.landing-modern .landing-hero a > button:hover,
+.landing-modern #mission a > button:hover,
+.landing-modern #join-purohit a > button:hover,
+.landing-modern footer a > button:hover {
+    box-shadow: 0 5px 0 rgba(77, 23, 11, .18) !important;
+    transform: translateY(-2px) !important;
+}
+
+.landing-modern .landing-hero {
+    display: flex;
+    align-items: center;
+    min-height: 708px;
+    padding-top: 72px !important;
+    padding-bottom: 72px !important;
+    isolation: isolate;
+}
+
+.landing-modern .landing-hero::before {
+    position: absolute;
+    z-index: -1;
+    top: 68px;
+    right: 4%;
+    width: 42%;
+    height: calc(100% - 136px);
+    border: 1px solid var(--landing-line);
+    background: #f5f1eb;
+    content: "";
+}
+
+.landing-modern .landing-hero-photo {
+    top: 88px !important;
+    right: 6.5% !important;
+    bottom: 88px !important;
+    width: 38% !important;
+    border: 0 !important;
+    border-radius: 6px !important;
+    box-shadow: 0 24px 54px -36px rgba(50, 30, 18, .46) !important;
+}
+
+.landing-modern .landing-hero-photo::after {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255, 255, 255, .44);
+    border-radius: inherit;
+    content: "";
+    pointer-events: none;
+}
+
+    .landing-modern .landing-hero-photo > div {
+        z-index: 3;
+    width: min(340px, 83%) !important;
+    padding: 16px 18px !important;
+    border-radius: 0 6px 0 0 !important;
+    box-shadow: none !important;
+}
+
+.landing-modern .landing-hero > div:nth-child(2) {
+    max-width: 56% !important;
+}
+
+.landing-modern .landing-hero h1 {
+    max-width: 670px;
+    font-size: clamp(47px, 5vw, 70px) !important;
+    font-weight: 650 !important;
+    letter-spacing: -.035em !important;
+}
+
+.landing-modern .landing-hero h1 .text-saffron,
+.landing-modern .landing-hero h1 .text-kumkuma {
+    color: var(--landing-red) !important;
+}
+
+.landing-modern .landing-hero p {
+    max-width: 630px;
+    font-size: 16px;
+}
+
+.landing-modern .landing-hero .mt-8.flex.flex-wrap.items-center {
+    gap: 22px;
+}
+
+.landing-modern .landing-hero .mt-8.flex.flex-wrap.items-center > div {
+    font-size: 12px;
+}
+
+.landing-modern #mission > div {
+    padding: 42px 0 !important;
+}
+
+.landing-modern #mission > div > div {
+    align-items: stretch;
+}
+
+.landing-modern #mission .w-full.md\:w-72 > div {
+    height: 100%;
+    border-top: 3px solid var(--landing-red) !important;
+    background: var(--landing-soft) !important;
+}
+
+.landing-modern .landing-priest-marketplace > div {
+    min-height: 590px;
+    background: #651914 !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+}
+
+.landing-modern .landing-priest-arrival {
+    width: 68% !important;
+    opacity: .64;
+    mix-blend-mode: luminosity;
+    object-position: center right;
+}
+
+.landing-modern .landing-priest-marketplace > div::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(70, 12, 10, .99) 0%, rgba(93, 20, 15, .94) 44%, rgba(93, 20, 15, .48) 100%);
+    content: "";
+    pointer-events: none;
+}
+
+.landing-modern .landing-priest-marketplace > div > .relative {
+    z-index: 2;
+}
+
+.landing-modern .landing-priest-marketplace .md\:col-span-2 > div {
+    border-radius: 7px !important;
+    box-shadow: 0 18px 46px -32px rgba(0, 0, 0, .7) !important;
+}
+
+.landing-modern #poojas .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.landing-modern #poojas a.group {
+    overflow: hidden;
+    border-radius: 7px !important;
+    background: #fff;
+    transition: transform 180ms cubic-bezier(.2,.8,.2,1), box-shadow 180ms ease, border-color 180ms ease !important;
+}
+
+.landing-modern #poojas a.group:hover {
+    border-color: rgba(198, 71, 28, .42) !important;
+    box-shadow: 0 20px 44px -34px rgba(58, 36, 19, .48) !important;
+    transform: translateY(-4px) !important;
+}
+
+.landing-modern #poojas a.group > div:first-child {
+    height: 208px !important;
+    background: #eee9df;
+}
+
+.landing-modern #poojas a.group img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
+    filter: saturate(.9) contrast(1.02) !important;
+    transition: transform 360ms cubic-bezier(.2,.8,.2,1) !important;
+}
+
+.landing-modern #poojas a.group:hover img {
+    transform: scale(1.035);
+}
+
+.landing-modern #poojas a.group > div:last-child {
+    min-height: 170px;
+    padding: 19px 20px 20px !important;
+}
+
+.landing-modern #how .grid {
+    position: relative;
+    gap: 0;
+    border-top: 1px solid var(--landing-line);
+}
+
+.landing-modern #how .grid > div {
+    min-height: 250px;
+    padding: 28px 30px !important;
+    border-top: 0 !important;
+    border-left: 1px solid var(--landing-line) !important;
+}
+
+.landing-modern #how .grid > div:first-child {
+    border-left: 0 !important;
+}
+
+.landing-modern section > div[class*="bg-gradient-to-br"] {
+    overflow: hidden;
+    border-radius: 8px !important;
+    background: #1f1c19 !important;
+    box-shadow: none !important;
+}
+
+.landing-modern section > div[class*="bg-gradient-to-br"]::before {
+    position: absolute;
+    top: -130px;
+    right: -60px;
+    width: 360px;
+    height: 360px;
+    border: 54px solid rgba(198, 71, 28, .23);
+    border-radius: 50%;
+    content: "";
+}
+
+.landing-modern #priests .purohit-profile {
+    border-radius: 7px !important;
+    overflow: hidden;
+}
+
+.landing-modern #priests .purohit-profile-photo {
+    aspect-ratio: 1 / .84;
+}
+
+.landing-modern #priests .purohit-profile-body {
+    padding: 22px !important;
+}
+
+.landing-modern #priests .purohit-profile-link {
+    color: var(--landing-red);
+}
+
+.landing-modern .chandana-panel {
+    position: relative;
+    background: #f7f4ef !important;
+}
+
+.landing-modern .chandana-panel::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: .34;
+    background-image: radial-gradient(rgba(198, 71, 28, .18) 1px, transparent 1px);
+    background-size: 18px 18px;
+    content: "";
+    pointer-events: none;
+}
+
+.landing-modern .chandana-panel > * { position: relative; }
+
+.landing-modern #faq [data-orientation] {
+    border: 1px solid var(--landing-line) !important;
+    border-radius: 7px !important;
+    background: #fff;
+}
+
+.landing-modern footer {
+    background: #1e1b18 !important;
+}
+
+@media (max-width: 1023px) {
+    .landing-modern .landing-hero {
+        min-height: 610px;
+    }
+
+    .landing-modern .landing-hero::before {
+        right: 0;
+        width: 43%;
+    }
+
+    .landing-modern .landing-hero-photo {
+        right: 3% !important;
+        width: 39% !important;
+    }
+
+    .landing-modern .landing-hero > div:nth-child(2) {
+        max-width: 56% !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .landing-modern {
+        background: #fff;
+    }
+
+    .landing-modern .landing-header > div {
+        min-height: 68px;
+    }
+
+    .landing-modern .landing-hero {
+        display: block;
+        min-height: auto;
+        padding-top: 48px !important;
+        padding-bottom: 52px !important;
+    }
+
+    .landing-modern .landing-hero::before,
+    .landing-modern .landing-hero-photo {
+        display: none !important;
+    }
+
+    .landing-modern .landing-hero > div:nth-child(2) {
+        max-width: none !important;
+    }
+
+    .landing-modern .landing-hero h1 {
+        font-size: clamp(39px, 12vw, 52px) !important;
+        letter-spacing: -.04em !important;
+    }
+
+    .landing-modern #mission > div { padding: 26px 0 !important; }
+
+    .landing-modern .landing-priest-marketplace > div {
+        min-height: auto;
+    }
+
+    .landing-modern .landing-priest-arrival {
+        width: 100% !important;
+        opacity: .26;
+    }
+
+    .landing-modern .landing-priest-marketplace > div::after {
+        background: rgba(70, 12, 10, .91);
+    }
+
+    .landing-modern #poojas .grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .landing-modern #poojas a.group {
+        display: grid;
+        grid-template-columns: 126px 1fr;
+    }
+
+    .landing-modern #poojas a.group > div:first-child {
+        height: 148px !important;
+    }
+
+    .landing-modern #poojas a.group > div:last-child {
+        min-height: 148px;
+        padding: 16px !important;
+    }
+
+    .landing-modern #how .grid {
+        border-top: 0;
+    }
+
+    .landing-modern #how .grid > div,
+    .landing-modern #how .grid > div:first-child {
+        min-height: 0;
+        border-top: 1px solid var(--landing-line) !important;
+        border-left: 0 !important;
+    }
+}
+
+/* Authoritative desktop hero layer, deliberately after every legacy landing rule. */
+@media (min-width: 1024px) {
+    .landing-modern .landing-hero {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 76px max(28px, calc((100vw - 1240px) / 2)) !important;
+        background: #281c16 !important;
+        isolation: isolate;
+    }
+    .landing-modern .landing-hero::before {
+        z-index: 1 !important;
+        top: 0 !important;
+        right: auto !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 57% !important;
+        height: auto !important;
+        border: 0 !important;
+        background: rgba(39, 27, 20, .84) !important;
+    }
+    .landing-modern .landing-hero-photo {
+        display: block !important;
+        z-index: 0 !important;
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: auto !important;
+        height: auto !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+    .landing-modern .landing-hero-photo img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center right !important;
+        filter: saturate(.92) contrast(1.04) brightness(.86) !important;
+    }
+    .landing-modern .landing-hero-photo > div {
+        z-index: 3 !important;
+        right: max(28px, calc((100vw - 1240px) / 2)) !important;
+        bottom: 28px !important;
+        left: auto !important;
+        width: 280px !important;
+        border: 0 !important;
+        border-radius: 7px !important;
+        background: rgba(255, 253, 249, .96) !important;
+        box-shadow: 0 16px 44px -28px rgba(0, 0, 0, .55) !important;
+    }
+    .landing-modern .landing-hero > div:nth-child(2) {
+        position: relative !important;
+        z-index: 2 !important;
+        max-width: 51% !important;
+    }
+    .landing-modern .landing-hero .text-ink,
+    .landing-modern .landing-hero .text-muted2,
+    .landing-modern .landing-hero .text-hoysala { color: #fffdf9 !important; }
+    .landing-modern .landing-hero .text-saffron,
+    .landing-modern .landing-hero .text-kumkuma { color: #f5ab76 !important; }
+    .landing-modern .landing-hero h1 { color: #fffdf9 !important; }
+}

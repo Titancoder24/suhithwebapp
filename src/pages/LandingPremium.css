@@ -1,0 +1,910 @@
+/*
+ * Purohith Connect landing experience
+ * This file is intentionally the final visual layer for Landing.jsx. It keeps
+ * the existing content and routes intact while replacing historic style passes.
+ */
+
+.App .landing-modern {
+  --pc-orange: #e84a15;
+  --pc-orange-deep: #c53a0b;
+  --pc-orange-soft: #fff2ec;
+  --pc-ink: #181818;
+  --pc-muted: #6a6a68;
+  --pc-line: #e7e7e3;
+  --pc-soft: #f7f7f5;
+  --pc-white: #fff;
+  --pc-radius: 22px;
+  --pc-shadow: 0 18px 55px rgba(20, 20, 18, .08);
+  color: var(--pc-ink);
+  background: var(--pc-white) !important;
+  font-family: "Plus Jakarta Sans", "Manrope", system-ui, sans-serif !important;
+}
+
+.App .landing-modern *,
+.App .landing-modern *::before,
+.App .landing-modern *::after {
+  box-sizing: border-box;
+}
+
+.App .landing-modern .font-heading,
+.App .landing-modern h1,
+.App .landing-modern h2,
+.App .landing-modern h3,
+.App .landing-modern h4,
+.App .landing-modern button {
+  font-family: "Plus Jakarta Sans", "Manrope", system-ui, sans-serif !important;
+  letter-spacing: 0 !important;
+}
+
+.App .landing-modern h1,
+.App .landing-modern h2,
+.App .landing-modern h3,
+.App .landing-modern h4 {
+  text-wrap: balance;
+}
+
+.App .landing-modern p {
+  text-wrap: pretty;
+}
+
+.App .landing-modern .text-ink { color: var(--pc-ink) !important; }
+.App .landing-modern .text-muted2 { color: var(--pc-muted) !important; }
+.App .landing-modern .text-saffron,
+.App .landing-modern .text-kumkuma,
+.App .landing-modern .text-mysoreGold-dark { color: var(--pc-orange) !important; }
+.App .landing-modern .bg-saffron,
+.App .landing-modern .bg-kumkuma { background: var(--pc-orange) !important; }
+.App .landing-modern .hover\:bg-saffron-dark:hover { background: var(--pc-orange-deep) !important; }
+.App .landing-modern > .sacred-border,
+.App .landing-modern footer .sacred-border,
+.App .landing-modern .hoysala-band { display: none !important; }
+
+.App .landing-modern .max-w-6xl { max-width: 1280px !important; }
+
+/* Header */
+.App .landing-modern .landing-header {
+  position: sticky !important;
+  top: 0;
+  border-color: rgba(24, 24, 24, .08) !important;
+  background: rgba(255, 255, 255, .94) !important;
+  box-shadow: 0 1px 0 rgba(24, 24, 24, .04) !important;
+  backdrop-filter: blur(18px) saturate(150%);
+}
+
+.App .landing-modern .landing-header > div {
+  min-height: 78px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+.App .landing-modern .landing-header a:first-child > .w-10 {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 14px !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .24), 0 8px 24px rgba(232, 74, 21, .2) !important;
+}
+
+.App .landing-modern .landing-header .font-heading.text-xl {
+  color: var(--pc-ink) !important;
+  font-size: 18px !important;
+  font-weight: 750 !important;
+}
+
+.App .landing-modern .landing-header nav {
+  gap: 30px !important;
+}
+
+.App .landing-modern .landing-header nav a {
+  padding: 13px 0;
+  color: #3c3c3a !important;
+  font-size: 13px !important;
+  font-weight: 650 !important;
+}
+
+.App .landing-modern .landing-header nav a::after {
+  bottom: 7px !important;
+  height: 2px !important;
+  border-radius: 2px;
+  background: var(--pc-orange) !important;
+}
+
+/* Shared controls */
+.App .landing-modern button {
+  min-height: 46px;
+  border-radius: 12px !important;
+  border-width: 1px !important;
+  box-shadow: none !important;
+  font-weight: 700 !important;
+  transition: transform 180ms cubic-bezier(.2, .8, .2, 1), background 180ms ease, box-shadow 180ms ease !important;
+}
+
+.App .landing-modern button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 28px rgba(24, 24, 24, .12) !important;
+}
+
+.App .landing-modern button:active {
+  transform: translateY(0) scale(.985) !important;
+}
+
+.App .landing-modern button.bg-saffron,
+.App .landing-modern [data-testid="landing-book-cta"],
+.App .landing-modern [data-testid="final-book-cta"] {
+  background: var(--pc-orange) !important;
+  color: #fff !important;
+}
+
+/* Hero */
+.App .landing-modern .landing-hero {
+  display: grid !important;
+  grid-template-columns: minmax(0, .94fr) minmax(480px, 1.06fr);
+  align-items: center !important;
+  gap: clamp(48px, 6vw, 92px);
+  width: 100% !important;
+  max-width: 1400px !important;
+  min-height: 810px !important;
+  margin: 0 auto !important;
+  padding: 68px 48px 78px !important;
+  border: 0 !important;
+  background: #fff !important;
+  isolation: isolate;
+}
+
+.App .landing-modern .landing-hero::before {
+  display: block !important;
+  position: absolute !important;
+  z-index: -1 !important;
+  top: 34px !important;
+  right: 20px !important;
+  bottom: 34px !important;
+  left: 47% !important;
+  width: auto !important;
+  height: auto !important;
+  border: 0 !important;
+  border-radius: 34px !important;
+  background: #f3f1ed !important;
+  content: "" !important;
+}
+
+.App .landing-modern .landing-hero-photo {
+  display: block !important;
+  position: relative !important;
+  z-index: 1 !important;
+  grid-column: 2;
+  grid-row: 1;
+  top: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 760px !important;
+  align-self: stretch;
+  overflow: hidden !important;
+  border: 0 !important;
+  border-radius: 30px !important;
+  background: #ede9e2 !important;
+  box-shadow: 0 28px 80px rgba(32, 25, 19, .14) !important;
+}
+
+.App .landing-modern .landing-hero-photo::after {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, .38);
+  border-radius: inherit;
+  background: linear-gradient(180deg, transparent 60%, rgba(13, 10, 8, .2));
+  content: "";
+  pointer-events: none;
+}
+
+.App .landing-modern .landing-hero-photo img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: 66% center !important;
+  filter: saturate(.94) contrast(1.02) !important;
+  transform: scale(1.01);
+}
+
+.App .landing-modern .landing-hero-photo > div {
+  z-index: 2 !important;
+  right: 22px !important;
+  bottom: 22px !important;
+  left: 22px !important;
+  width: auto !important;
+  padding: 17px 18px !important;
+  border: 1px solid rgba(255, 255, 255, .72) !important;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, .88) !important;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .12) !important;
+  backdrop-filter: blur(18px) saturate(130%);
+}
+
+.App .landing-modern .landing-hero > div:nth-child(2) {
+  position: relative !important;
+  z-index: 2 !important;
+  grid-column: 1;
+  grid-row: 1;
+  max-width: 660px !important;
+}
+
+.App .landing-modern .landing-hero .inline-flex.rounded-full {
+  border-color: #e6e0d9 !important;
+  border-radius: 999px !important;
+  background: #fff !important;
+  color: #4f4a45 !important;
+  box-shadow: 0 8px 25px rgba(31, 25, 20, .05);
+}
+
+.App .landing-modern .landing-hero [data-testid="shubh-karya-badge"] {
+  background: var(--pc-orange-soft) !important;
+  color: var(--pc-orange-deep) !important;
+}
+
+.App .landing-modern .landing-hero h1 {
+  max-width: 680px !important;
+  margin-top: 4px;
+  color: var(--pc-ink) !important;
+  font-size: clamp(50px, 5.1vw, 74px) !important;
+  font-weight: 720 !important;
+  line-height: 1.01 !important;
+  letter-spacing: -2.5px !important;
+}
+
+.App .landing-modern .landing-hero h1 .text-saffron,
+.App .landing-modern .landing-hero h1 .text-kumkuma {
+  color: var(--pc-orange) !important;
+}
+
+.App .landing-modern .landing-hero .text-hoysala,
+.App .landing-modern .landing-hero .text-ink,
+.App .landing-modern .landing-hero .text-muted2 {
+  color: inherit !important;
+}
+
+.App .landing-modern .landing-hero .border-l-2 {
+  border-color: var(--pc-orange) !important;
+}
+
+.App .landing-modern .landing-hero p {
+  max-width: 620px !important;
+  color: var(--pc-muted) !important;
+  font-size: 16px !important;
+  line-height: 1.72 !important;
+}
+
+.App .landing-modern .landing-hero .space-y-3 {
+  display: grid;
+  gap: 12px;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--pc-line);
+}
+
+.App .landing-modern .landing-hero .mt-8.flex.flex-wrap.items-center {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 !important;
+  overflow: hidden;
+  border: 1px solid var(--pc-line);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.App .landing-modern .landing-hero .mt-8.flex.flex-wrap.items-center > div {
+  min-height: 44px;
+  padding: 12px 14px;
+  border-right: 1px solid var(--pc-line);
+  border-bottom: 1px solid var(--pc-line);
+  color: #4e4e4b !important;
+  font-size: 12px;
+}
+
+.App .landing-modern .landing-hero .mt-8.flex.flex-wrap.items-center > div:nth-child(even) { border-right: 0; }
+.App .landing-modern .landing-hero .mt-8.flex.flex-wrap.items-center > div:nth-last-child(-n+2) { border-bottom: 0; }
+
+/* Global section rhythm */
+.App .landing-modern section:not(.landing-hero) {
+  padding-top: 84px !important;
+  padding-bottom: 84px !important;
+  scroll-margin-top: 90px;
+}
+
+.App .landing-modern section > div[class*="rounded"] {
+  border-radius: var(--pc-radius) !important;
+}
+
+.App .landing-modern section .inline-flex.rounded-full:not(button),
+.App .landing-modern section span.rounded-full {
+  border-radius: 999px !important;
+}
+
+.App .landing-modern section h2 {
+  color: var(--pc-ink) !important;
+  font-size: clamp(34px, 4vw, 52px) !important;
+  font-weight: 690 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -1.4px !important;
+}
+
+.App .landing-modern section h3 {
+  font-weight: 680 !important;
+}
+
+/* Mission */
+.App .landing-modern #mission > div {
+  overflow: hidden;
+  padding: 58px 62px !important;
+  border: 0 !important;
+  background: var(--pc-soft) !important;
+  box-shadow: none !important;
+}
+
+.App .landing-modern #mission > div > div {
+  gap: clamp(50px, 8vw, 110px) !important;
+  align-items: center !important;
+}
+
+.App .landing-modern #mission .grid.grid-cols-2 {
+  gap: 0 !important;
+  overflow: hidden;
+  border: 1px solid #deded9;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.App .landing-modern #mission .grid.grid-cols-2 > div {
+  padding: 20px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+.App .landing-modern #mission .grid.grid-cols-2 > div + div {
+  border-left: 1px solid #deded9 !important;
+}
+
+.App .landing-modern #mission .w-full.md\:w-72 {
+  width: min(100%, 340px) !important;
+}
+
+.App .landing-modern #mission .w-full.md\:w-72 > div {
+  padding: 28px !important;
+  border: 0 !important;
+  border-radius: 20px !important;
+  background: #fff !important;
+  box-shadow: 0 20px 55px rgba(26, 25, 22, .08) !important;
+}
+
+/* Priest marketplace feature */
+.App .landing-modern .landing-priest-marketplace > div {
+  min-height: 690px !important;
+  overflow: hidden;
+  border: 0 !important;
+  border-radius: 28px !important;
+  background: #20120d !important;
+  box-shadow: 0 30px 80px rgba(35, 18, 10, .15) !important;
+}
+
+.App .landing-modern .landing-priest-arrival {
+  width: 66% !important;
+  opacity: 1 !important;
+  object-position: center right !important;
+  mix-blend-mode: normal !important;
+  filter: saturate(.9) contrast(1.03);
+}
+
+.App .landing-modern .landing-priest-marketplace > div::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(31, 16, 10, .99) 0%, rgba(38, 19, 12, .96) 48%, rgba(38, 19, 12, .25) 100%) !important;
+  content: "";
+  pointer-events: none;
+}
+
+.App .landing-modern .landing-priest-marketplace > div > .relative {
+  z-index: 2;
+}
+
+.App .landing-modern .landing-priest-marketplace .grid[class*="md:grid-cols-5"] {
+  gap: 48px !important;
+}
+
+.App .landing-modern .landing-priest-marketplace [class*="bg-cotton/10"] {
+  border-color: rgba(255, 255, 255, .14) !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, .08) !important;
+}
+
+.App .landing-modern .landing-priest-marketplace .bg-cotton {
+  border: 1px solid rgba(255, 255, 255, .45) !important;
+  border-radius: 20px !important;
+  background: rgba(255, 255, 255, .94) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .22) !important;
+  backdrop-filter: blur(16px);
+}
+
+.App .landing-modern .landing-priest-marketplace .bg-marigold {
+  background: #fff !important;
+  color: var(--pc-orange-deep) !important;
+}
+
+/* Trust, mantra and compact utility strips */
+.App .landing-modern section:has([data-testid="mantra-strip"]) {
+  padding-top: 28px !important;
+  padding-bottom: 28px !important;
+}
+
+.App .landing-modern [data-testid="mantra-strip"] {
+  padding: 20px 26px !important;
+  border: 1px solid var(--pc-line) !important;
+  border-radius: 18px !important;
+  background: #fff !important;
+  box-shadow: 0 12px 36px rgba(24, 24, 22, .05) !important;
+}
+
+.App .landing-modern section .grid.grid-cols-2.md\:grid-cols-4 {
+  gap: 0 !important;
+  overflow: hidden;
+  border: 1px solid var(--pc-line) !important;
+  border-radius: 18px;
+}
+
+.App .landing-modern section .grid.grid-cols-2.md\:grid-cols-4 > div {
+  padding: 24px 18px !important;
+  border-right: 1px solid var(--pc-line);
+  background: #fff;
+}
+
+.App .landing-modern section .grid.grid-cols-2.md\:grid-cols-4 > div:last-child { border-right: 0; }
+
+/* Pooja marketplace */
+.App .landing-modern #poojas {
+  padding-top: 96px !important;
+  padding-bottom: 96px !important;
+}
+
+.App .landing-modern #poojas > .flex {
+  margin-bottom: 34px !important;
+}
+
+.App .landing-modern #poojas .grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 20px !important;
+}
+
+.App .landing-modern #poojas a.group {
+  display: flex !important;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--pc-line) !important;
+  border-radius: 20px !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  transition: transform 220ms cubic-bezier(.2, .8, .2, 1), box-shadow 220ms ease !important;
+}
+
+.App .landing-modern #poojas a.group:first-child {
+  grid-column: span 2;
+}
+
+.App .landing-modern #poojas a.group:hover {
+  border-color: #d7d6d1 !important;
+  box-shadow: var(--pc-shadow) !important;
+  transform: translateY(-5px) !important;
+}
+
+.App .landing-modern #poojas a.group > div:first-child {
+  width: 46%;
+  height: 254px !important;
+  min-width: 154px;
+  flex: none;
+  border-radius: 0 !important;
+  background: #efede8;
+}
+
+.App .landing-modern #poojas a.group:not(:first-child) {
+  flex-direction: column;
+}
+
+.App .landing-modern #poojas a.group:not(:first-child) > div:first-child {
+  width: 100%;
+  height: 188px !important;
+}
+
+.App .landing-modern #poojas a.group img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  filter: saturate(.9) contrast(1.03) !important;
+  transition: transform 500ms cubic-bezier(.2, .8, .2, 1) !important;
+}
+
+.App .landing-modern #poojas a.group:hover img { transform: scale(1.035); }
+
+.App .landing-modern #poojas a.group > div:last-child {
+  display: flex;
+  min-height: 188px !important;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: 22px !important;
+}
+
+.App .landing-modern #poojas a.group:first-child > div:last-child { padding: 30px !important; }
+
+/* Features and process */
+.App .landing-modern .chandana-panel {
+  border-color: var(--pc-line) !important;
+  background: var(--pc-soft) !important;
+}
+
+.App .landing-modern .chandana-panel::before { display: none !important; }
+
+.App .landing-modern .chandana-panel .grid > div {
+  border: 1px solid #e1e1dc !important;
+  border-radius: 18px !important;
+  background: #fff !important;
+}
+
+.App .landing-modern #how .grid {
+  gap: 18px !important;
+  border: 0 !important;
+}
+
+.App .landing-modern #how .grid > div {
+  min-height: 276px !important;
+  padding: 30px !important;
+  border: 1px solid var(--pc-line) !important;
+  border-radius: 18px !important;
+  background: #fff;
+}
+
+.App .landing-modern #how .grid > div:hover {
+  border-color: #d6d5d0 !important;
+  box-shadow: 0 18px 48px rgba(24, 24, 22, .07);
+}
+
+/* Dark AI spotlight */
+.App .landing-modern section > div[class*="bg-gradient-to-br"] {
+  overflow: hidden;
+  border: 0 !important;
+  border-radius: 24px !important;
+  background: #1d1d1b !important;
+  box-shadow: none !important;
+}
+
+.App .landing-modern section > div[class*="bg-gradient-to-br"]::before {
+  position: absolute;
+  top: -170px;
+  right: -90px;
+  width: 440px;
+  height: 440px;
+  border: 80px solid rgba(232, 74, 21, .38);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+/* Purohit profiles */
+.App .landing-modern #priests .grid { gap: 20px !important; }
+
+.App .landing-modern #priests .purohit-profile {
+  overflow: hidden;
+  border: 1px solid var(--pc-line) !important;
+  border-radius: 20px !important;
+  background: #fff;
+  box-shadow: none !important;
+  transition: transform 220ms cubic-bezier(.2, .8, .2, 1), box-shadow 220ms ease !important;
+}
+
+.App .landing-modern #priests .purohit-profile:hover {
+  box-shadow: var(--pc-shadow) !important;
+  transform: translateY(-5px);
+}
+
+.App .landing-modern #priests .purohit-profile-photo {
+  position: relative;
+  height: 310px !important;
+  aspect-ratio: auto !important;
+  overflow: hidden;
+  background: #eeeae3;
+}
+
+.App .landing-modern #priests .purohit-profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 500ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.App .landing-modern #priests .purohit-profile:hover img { transform: scale(1.025); }
+
+.App .landing-modern #priests .purohit-availability {
+  right: 14px;
+  bottom: 14px;
+  left: 14px;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, .65);
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, .88);
+  backdrop-filter: blur(12px);
+}
+
+.App .landing-modern #priests .purohit-profile-body { padding: 24px !important; }
+.App .landing-modern #priests .purohit-profile-link { color: var(--pc-orange) !important; }
+
+/* Reviews, dates, FAQ */
+.App .landing-modern .chandana-panel .grid.md\:grid-cols-2 > div {
+  padding: 28px !important;
+  border-radius: 18px !important;
+}
+
+.App .landing-modern #muhurat .grid { gap: 14px !important; }
+
+.App .landing-modern #muhurat .grid > div {
+  min-height: 196px;
+  border: 1px solid var(--pc-line) !important;
+  border-radius: 18px !important;
+  box-shadow: none !important;
+}
+
+.App .landing-modern #faq {
+  max-width: 960px !important;
+}
+
+.App .landing-modern #faq > .text-center { text-align: left !important; }
+
+.App .landing-modern #faq [data-orientation] {
+  overflow: hidden;
+  border: 1px solid var(--pc-line) !important;
+  border-radius: 20px !important;
+  background: #fff;
+  box-shadow: none !important;
+}
+
+.App .landing-modern #faq [data-orientation] button:hover {
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Final conversion area */
+.App .landing-modern section:has([data-testid="final-book-cta"]) {
+  max-width: none !important;
+  padding: 100px 24px !important;
+  background: var(--pc-orange-soft);
+}
+
+.App .landing-modern section:has([data-testid="final-book-cta"]) > div {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.App .landing-modern section:has([data-testid="final-book-cta"]) .w-12,
+.App .landing-modern section:has([data-testid="final-book-cta"]) .text-6xl {
+  transform: scale(.8);
+}
+
+/* Footer */
+.App .landing-modern footer {
+  margin-top: 0 !important;
+  background: #181816 !important;
+}
+
+.App .landing-modern footer .max-w-6xl {
+  padding-top: 72px !important;
+  padding-bottom: 72px !important;
+}
+
+.App .landing-modern footer .w-11 {
+  border-radius: 14px !important;
+}
+
+/* Motion */
+@keyframes pc-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.App .landing-modern .landing-hero > div:nth-child(2) {
+  animation: pc-rise 620ms cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.App .landing-modern .landing-hero-photo {
+  animation: pc-rise 720ms 80ms cubic-bezier(.2, .8, .2, 1) both;
+}
+
+@media (max-width: 1100px) {
+  .App .landing-modern .landing-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(400px, .9fr);
+    gap: 40px;
+    padding-inline: 32px !important;
+  }
+
+  .App .landing-modern .landing-hero h1 {
+    font-size: clamp(46px, 5.6vw, 62px) !important;
+  }
+
+  .App .landing-modern .landing-header nav { gap: 20px !important; }
+}
+
+@media (max-width: 900px) {
+  .App .landing-modern .landing-hero {
+    grid-template-columns: 1fr !important;
+    gap: 36px;
+    min-height: 0 !important;
+    padding: 34px 24px 64px !important;
+  }
+
+  .App .landing-modern .landing-hero::before { display: none !important; }
+
+  .App .landing-modern .landing-hero-photo {
+    grid-column: 1;
+    grid-row: 1;
+    height: min(68vw, 540px) !important;
+    border-radius: 24px !important;
+  }
+
+  .App .landing-modern .landing-hero > div:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+    max-width: 760px !important;
+  }
+
+  .App .landing-modern #mission > div { padding: 42px !important; }
+  .App .landing-modern .landing-priest-arrival { width: 100% !important; opacity: .55 !important; }
+  .App .landing-modern .landing-priest-marketplace > div::after { background: rgba(31, 16, 10, .88) !important; }
+  .App .landing-modern #poojas .grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .App .landing-modern #poojas a.group:first-child { grid-column: span 2; }
+}
+
+@media (max-width: 640px) {
+  .App .landing-modern .landing-header > div {
+    min-height: 66px !important;
+    padding-inline: 18px !important;
+  }
+
+  .App .landing-modern .landing-header a:first-child { gap: 10px !important; }
+  .App .landing-modern .landing-header a:first-child > .w-10 { width: 38px !important; height: 38px !important; border-radius: 12px !important; }
+  .App .landing-modern .landing-header .font-heading.text-xl { font-size: 15px !important; }
+  .App .landing-modern .landing-header .text-\[11px\] { display: none !important; }
+  .App .landing-modern .landing-header [data-testid="header-book-cta"] { min-height: 40px; height: 40px !important; padding-inline: 14px !important; font-size: 12px !important; }
+
+  .App .landing-modern .landing-hero {
+    padding: 18px 18px 50px !important;
+    gap: 28px;
+  }
+
+  .App .landing-modern .landing-hero-photo {
+    height: 320px !important;
+    min-height: 320px !important;
+    border-radius: 20px !important;
+  }
+
+  .App .landing-modern .landing-hero-photo img { object-position: 62% center !important; }
+
+  .App .landing-modern .landing-hero-photo > div {
+    right: 12px !important;
+    bottom: 12px !important;
+    left: 12px !important;
+    padding: 14px !important;
+    border-radius: 14px !important;
+  }
+
+  .App .landing-modern .landing-hero h1 {
+    font-size: clamp(40px, 12.5vw, 52px) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -1.8px !important;
+  }
+
+  .App .landing-modern .landing-hero .inline-flex.rounded-full {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .App .landing-modern .landing-hero .mt-8.flex.flex-wrap.items-center {
+    grid-template-columns: 1fr;
+  }
+
+  .App .landing-modern .landing-hero .mt-8.flex.flex-wrap.items-center > div {
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--pc-line) !important;
+  }
+
+  .App .landing-modern .landing-hero .mt-8.flex.flex-wrap.items-center > div:last-child { border-bottom: 0 !important; }
+
+  .App .landing-modern section:not(.landing-hero) {
+    padding-top: 58px !important;
+    padding-bottom: 58px !important;
+    padding-right: 18px !important;
+    padding-left: 18px !important;
+  }
+
+  .App .landing-modern section h2 {
+    font-size: 34px !important;
+    letter-spacing: -1px !important;
+  }
+
+  .App .landing-modern #mission > div { padding: 28px 22px !important; border-radius: 20px !important; }
+  .App .landing-modern #mission > div > div { gap: 34px !important; }
+  .App .landing-modern #mission .grid.grid-cols-2 { grid-template-columns: 1fr; }
+  .App .landing-modern #mission .grid.grid-cols-2 > div + div { border-top: 1px solid #deded9 !important; border-left: 0 !important; }
+
+  .App .landing-modern .landing-priest-marketplace { padding-right: 18px !important; padding-left: 18px !important; }
+  .App .landing-modern .landing-priest-marketplace > div { min-height: 0 !important; border-radius: 20px !important; }
+  .App .landing-modern .landing-priest-marketplace > div > .relative { padding: 28px 22px !important; }
+
+  .App .landing-modern #poojas .grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .App .landing-modern #poojas a.group,
+  .App .landing-modern #poojas a.group:first-child,
+  .App .landing-modern #poojas a.group:not(:first-child) {
+    display: grid !important;
+    grid-column: auto;
+    grid-template-columns: 132px minmax(0, 1fr);
+    flex-direction: row;
+    border-radius: 16px !important;
+  }
+
+  .App .landing-modern #poojas a.group > div:first-child,
+  .App .landing-modern #poojas a.group:not(:first-child) > div:first-child {
+    width: 132px !important;
+    height: 164px !important;
+    min-width: 0;
+  }
+
+  .App .landing-modern #poojas a.group > div:last-child,
+  .App .landing-modern #poojas a.group:first-child > div:last-child {
+    min-width: 0;
+    min-height: 164px !important;
+    padding: 16px !important;
+  }
+
+  .App .landing-modern #poojas a.group .font-heading { font-size: 17px !important; }
+  .App .landing-modern #poojas a.group .font-kannada { font-size: 13px !important; }
+
+  .App .landing-modern section .grid.grid-cols-2.md\:grid-cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .App .landing-modern section .grid.grid-cols-2.md\:grid-cols-4 > div:nth-child(2) { border-right: 0; }
+  .App .landing-modern section .grid.grid-cols-2.md\:grid-cols-4 > div:nth-child(-n+2) { border-bottom: 1px solid var(--pc-line); }
+
+  .App .landing-modern #how .grid > div { min-height: 0 !important; }
+  .App .landing-modern #priests .purohit-profile-photo { height: 340px !important; }
+
+  .App .landing-modern section:has([data-testid="final-book-cta"]) { padding: 72px 18px !important; }
+  .App .landing-modern footer .max-w-6xl { padding: 56px 20px !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .App .landing-modern *,
+  .App .landing-modern *::before,
+  .App .landing-modern *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* Final root lock: legacy landing rules in index.css use !important. */
+#root .App .landing-modern .landing-hero {
+  color: var(--pc-ink) !important;
+}
+
+#root .App .landing-modern .landing-hero > div:nth-child(2) {
+  max-width: 660px !important;
+}
+
+#root .App .landing-modern .landing-hero h1,
+#root .App .landing-modern .landing-hero .text-ink,
+#root .App .landing-modern .landing-hero .text-hoysala {
+  color: var(--pc-ink) !important;
+}
+
+#root .App .landing-modern .landing-hero .text-muted2 {
+  color: var(--pc-muted) !important;
+}
+
+#root .App .landing-modern .landing-hero .text-saffron,
+#root .App .landing-modern .landing-hero .text-kumkuma {
+  color: var(--pc-orange) !important;
+}
