@@ -874,6 +874,338 @@
   .App .landing-modern footer .max-w-6xl { padding: 56px 20px !important; }
 }
 
+/* Complete mobile system: compact, touch-safe, and free of clipped content. */
+@media (max-width: 640px) {
+  #root .App .landing-modern {
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  #root .App .landing-modern .landing-header > div {
+    gap: 8px;
+  }
+
+  #root .App .landing-modern .landing-header a:first-child {
+    min-width: 0;
+  }
+
+  #root .App .landing-modern .landing-header a:first-child > .w-10 {
+    width: 34px !important;
+    height: 34px !important;
+    flex: 0 0 34px;
+  }
+
+  #root .App .landing-modern .landing-header .font-heading.text-xl {
+    overflow: hidden;
+    max-width: 148px;
+    font-size: 14px !important;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #root .App .landing-modern .landing-header [data-testid="header-book-cta"] {
+    min-width: 104px;
+    min-height: 42px;
+    padding-right: 11px !important;
+    padding-left: 11px !important;
+  }
+
+  #root .App .landing-modern .landing-header [data-testid="header-book-cta"] .font-sanskrit {
+    display: none;
+  }
+
+  #root .App .landing-modern .landing-hero {
+    padding-top: 14px !important;
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+  }
+
+  #root .App .landing-modern .landing-hero-photo {
+    height: 292px !important;
+    min-height: 292px !important;
+  }
+
+  #root .App .landing-modern .landing-hero-photo > div {
+    right: 10px !important;
+    bottom: 10px !important;
+    left: 10px !important;
+    padding: 11px 13px !important;
+  }
+
+  #root .App .landing-modern .landing-hero-photo > div .text-lg {
+    font-size: 15px !important;
+  }
+
+  #root .App .landing-modern .landing-hero h1 {
+    font-size: clamp(38px, 11.5vw, 46px) !important;
+    line-height: 1.01 !important;
+  }
+
+  #root .App .landing-modern .landing-hero .mt-8.flex.flex-wrap.gap-3 {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    gap: 10px !important;
+  }
+
+  #root .App .landing-modern .landing-hero .mt-8.flex.flex-wrap.gap-3 a,
+  #root .App .landing-modern .landing-hero .mt-8.flex.flex-wrap.gap-3 button {
+    width: 100%;
+  }
+
+  #root .App .landing-modern section:not(.landing-hero) {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+  }
+
+  #root .App .landing-modern section h2 {
+    font-size: clamp(30px, 9vw, 34px) !important;
+    line-height: 1.08 !important;
+  }
+
+  #root .App .landing-modern #mission > div {
+    padding: 26px 20px !important;
+  }
+
+  #root .App .landing-modern #mission .mt-6.flex.flex-wrap.gap-3 {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  #root .App .landing-modern #mission .mt-6.flex.flex-wrap.gap-3 a,
+  #root .App .landing-modern #mission .mt-6.flex.flex-wrap.gap-3 button {
+    width: 100%;
+  }
+
+  #root .App .landing-modern #join-purohit,
+  #root .App .landing-modern #join-purohit > div,
+  #root .App .landing-modern #join-purohit > div > .relative,
+  #root .App .landing-modern #join-purohit .grid,
+  #root .App .landing-modern #join-purohit .md\:col-span-3,
+  #root .App .landing-modern #join-purohit .md\:col-span-2 {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  #root .App .landing-modern #join-purohit {
+    overflow: visible !important;
+  }
+
+  #root .App .landing-modern #join-purohit > div {
+    overflow: hidden !important;
+  }
+
+  #root .App .landing-modern #join-purohit > div > .relative {
+    padding: 26px 20px !important;
+  }
+
+  #root .App .landing-modern #join-purohit .grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 26px !important;
+  }
+
+  #root .App .landing-modern #join-purohit h2,
+  #root .App .landing-modern #join-purohit p,
+  #root .App .landing-modern #join-purohit .font-kannada,
+  #root .App .landing-modern #join-purohit .text-sm,
+  #root .App .landing-modern #join-purohit .text-xs {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  #root .App .landing-modern #join-purohit [data-testid="talent-badge"] {
+    width: 100%;
+    flex-wrap: wrap;
+    border-radius: 14px !important;
+    white-space: normal;
+  }
+
+  #root .App .landing-modern #join-purohit .mt-8.flex.flex-wrap.items-center {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px !important;
+  }
+
+  #root .App .landing-modern #join-purohit .mt-8.flex.flex-wrap.items-center > a,
+  #root .App .landing-modern #join-purohit .mt-8.flex.flex-wrap.items-center button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  #root .App .landing-modern #join-purohit [data-testid="join-purohit-cta"] {
+    height: auto;
+    min-height: 54px;
+    padding: 12px 14px !important;
+    white-space: normal;
+  }
+
+  #root .App .landing-modern #join-purohit [data-testid="kn-read-more"] button {
+    height: auto;
+    min-height: 50px;
+    padding: 10px 13px !important;
+    white-space: normal;
+  }
+
+  #root .App .landing-modern #poojas > .flex {
+    align-items: flex-start !important;
+  }
+
+  #root .App .landing-modern #poojas > .flex > a {
+    min-height: 44px;
+    padding: 10px 0;
+  }
+
+  #root .App .landing-modern #poojas a.group,
+  #root .App .landing-modern #poojas a.group:first-child,
+  #root .App .landing-modern #poojas a.group:not(:first-child) {
+    grid-template-columns: 118px minmax(0, 1fr) !important;
+  }
+
+  #root .App .landing-modern #poojas a.group > div:first-child,
+  #root .App .landing-modern #poojas a.group:not(:first-child) > div:first-child {
+    width: 118px !important;
+    height: 156px !important;
+  }
+
+  #root .App .landing-modern #poojas a.group > div:last-child,
+  #root .App .landing-modern #poojas a.group:first-child > div:last-child {
+    min-height: 156px !important;
+    padding: 14px !important;
+  }
+
+  #root .App .landing-modern .landing-benefits .grid,
+  #root .App .landing-modern #how .grid,
+  #root .App .landing-modern #priests .grid,
+  #root .App .landing-modern .landing-testimonials .grid,
+  #root .App .landing-modern #muhurat .grid {
+    display: grid !important;
+    grid-auto-flow: column;
+    grid-auto-columns: min(82vw, 320px);
+    grid-template-columns: none !important;
+    gap: 14px !important;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding: 4px 2px 18px;
+    scroll-padding-inline: 2px;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: none;
+  }
+
+  #root .App .landing-modern .landing-benefits .grid::-webkit-scrollbar,
+  #root .App .landing-modern #how .grid::-webkit-scrollbar,
+  #root .App .landing-modern #priests .grid::-webkit-scrollbar,
+  #root .App .landing-modern .landing-testimonials .grid::-webkit-scrollbar,
+  #root .App .landing-modern #muhurat .grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  #root .App .landing-modern .landing-benefits .grid > *,
+  #root .App .landing-modern #how .grid > *,
+  #root .App .landing-modern #priests .grid > *,
+  #root .App .landing-modern .landing-testimonials .grid > *,
+  #root .App .landing-modern #muhurat .grid > * {
+    width: 100%;
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  #root .App .landing-modern #how .grid > div {
+    min-height: 300px !important;
+  }
+
+  #root .App .landing-modern #priests .purohit-profile-photo {
+    height: 300px !important;
+  }
+
+  #root .App .landing-modern .landing-testimonials .grid > div {
+    min-height: 330px;
+  }
+
+  #root .App .landing-modern #muhurat .grid > div {
+    min-height: 210px;
+  }
+
+  #root .App .landing-modern #muhurat .grid a,
+  #root .App .landing-modern footer a {
+    min-height: 44px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #root .App .landing-modern #faq [data-orientation] {
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+  }
+
+  #root .App .landing-modern #faq button {
+    min-height: 56px;
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+    font-size: 15px !important;
+    line-height: 1.35 !important;
+    white-space: normal;
+  }
+
+  #root .App .landing-modern section:has([data-testid="final-book-cta"]) {
+    padding-right: 18px !important;
+    padding-left: 18px !important;
+  }
+
+  #root .App .landing-modern section:has([data-testid="final-book-cta"]) .mt-8 {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  #root .App .landing-modern section:has([data-testid="final-book-cta"]) .mt-8 a,
+  #root .App .landing-modern section:has([data-testid="final-book-cta"]) .mt-8 button {
+    width: 100%;
+  }
+
+  #root .App .landing-modern footer .grid {
+    gap: 34px !important;
+  }
+
+  #root .App .landing-modern footer .flex.gap-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #root .App .landing-modern footer .flex.gap-2 a,
+  #root .App .landing-modern footer .flex.gap-2 button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 350px) {
+  #root .App .landing-modern .landing-header .font-heading.text-xl {
+    max-width: 118px;
+    font-size: 13px !important;
+  }
+
+  #root .App .landing-modern .landing-header [data-testid="header-book-cta"] {
+    min-width: 96px;
+    font-size: 11px !important;
+  }
+
+  #root .App .landing-modern .landing-hero h1 {
+    font-size: 36px !important;
+  }
+
+  #root .App .landing-modern #poojas a.group,
+  #root .App .landing-modern #poojas a.group:first-child,
+  #root .App .landing-modern #poojas a.group:not(:first-child) {
+    grid-template-columns: 102px minmax(0, 1fr) !important;
+  }
+
+  #root .App .landing-modern #poojas a.group > div:first-child,
+  #root .App .landing-modern #poojas a.group:not(:first-child) > div:first-child {
+    width: 102px !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .App .landing-modern *,
   .App .landing-modern *::before,

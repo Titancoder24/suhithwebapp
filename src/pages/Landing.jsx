@@ -626,7 +626,7 @@ export default function Landing() {
       </section>
 
       {/* WHY */}
-      <section className="chandana-panel border-y border-mysoreGold/40 py-16 relative z-10">
+      <section className="landing-benefits chandana-panel border-y border-mysoreGold/40 py-16 relative z-10">
         <div className="max-w-6xl mx-auto px-6">
           <div className="mb-10">
             <div className="font-kannada text-xl text-kumkuma mb-1" lang="kn">ವಿಶೇಷತೆಗಳು · Why choose us</div>
@@ -740,7 +740,7 @@ export default function Landing() {
       </section>
 
       {/* TESTIMONIALS — pan India */}
-      <section className="chandana-panel border-y border-mysoreGold/40 py-16 relative z-10">
+      <section className="landing-testimonials chandana-panel border-y border-mysoreGold/40 py-16 relative z-10">
         <div className="max-w-6xl mx-auto px-6">
           <div className="mb-10">
             <div className="font-kannada text-xl text-kumkuma mb-1" lang="kn">ಅನುಭವಗಳು · Family experiences</div>
